@@ -10,7 +10,7 @@
       <div class="col-md-10 col-lg-8 col-xl-7">
         <div class="site-heading">
           <h1>Georgi's Blog</h1>
-          <span class="subheading">A Blog Theme by Start Bootstrap</span>
+          <span class="subheading">A collection of random musings.</span>
         </div>
       </div>
     </div>
@@ -29,8 +29,10 @@
         </a>
         <p class="post-meta">
           Posted by
-          <a href="#">{{post.author}}</a>
+          <!-- post.author.name is now a User object -->
+          <a href="#">{{post.author.name}}</a>
           on {{post.date}}
+          <!-- Only show delete button if user id is 1 (admin user) -->
           <a href="{{url_for('delete_post', post_id=post.id) }}">✘</a>
         </p>
       </div>
@@ -39,6 +41,7 @@
       {% endfor %}
 
       <!-- New Post -->
+      <!-- Only show Create Post button if user id is 1 (admin user) -->
       <div class="d-flex justify-content-end mb-4">
         <a
           class="btn btn-primary float-right"
